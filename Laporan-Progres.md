@@ -18,3 +18,8 @@
 
 buka terminal, ketik npx create-expo-app@latest lalu isi nama proyeknya (misal kelompok6) dan enter. jika sudah selesai masuk ke cd kelompok6 -> npm run web
 WAJIB BAGI PM/mirorring dari hp pun bolehhh: install bluestacks 5 -> buka lalu login gmail -> search expo go dan install -> buka lalu copy bagian metro dari vscode dan paste di bagian url di expo go -> record utk konfirmasi
+
+...
+<img src="Recording-2026-10-11-172946.gif" width="30%">
+
+...
