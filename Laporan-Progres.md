@@ -23,3 +23,14 @@ WAJIB BAGI PM/mirorring dari hp pun bolehhh: install bluestacks 5 -> buka lalu l
 <img src="Recording-2026-10-11-172946.gif" width="30%">
 
 ...
+
+Tugas MEMBERNYA:
+clone repository -> tambahkan bukti di bagian tugas member (di Laporan-Progres.md)
+1. bukti acc invite:
+Nama: Dawwas Zakka Sutiono
+bukti ss:
+![alt text](image-4.png)
+bukti clone repo di vscode
+Nama: Dawwas Zakka Sutionno
+bukti ss: 
+![alt text](image-5.png)
