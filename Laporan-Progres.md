@@ -1,4 +1,4 @@
-# Laporan Progress Kelompok 2 #
+# Laporan Progress Kelompok 4 #
 ## Anggota Kelompok ##
 1. Moh.Farid Ilham Ghifari (2488010066)
 2. Dawwas Zakka Sutiono (248801015)
