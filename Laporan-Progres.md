@@ -39,9 +39,15 @@ bukti ss:
 bukti ss: 
 ![alt text](image-5.png)
 
-2. Nama: Muhammad Dhiyaul Haque
+1. bukti acc invite:
+Nama: Hanifa Eka Fauziah
 bukti ss:
-![alt text](dhiyaul-clone.png)
+![alt text](image-3.png)
+bukti clone repo di vscode
+Nama: Hanifa Eka Fauziah
+bukti ss: 
+![alt text](image-2.png)
+
 
 =======
 # NOTULENSI DISKUSI PROYEK KELOMPOK 4 #
@@ -83,4 +89,3 @@ Mengajukan:
 Belum ditentukan
 Tema yang diusulkan: 
 Alasan pemilihan:
-
