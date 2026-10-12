@@ -22,7 +22,6 @@
 
 ...
 
-<<<<<<< HEAD
 ### Tugas MEMBER ###
 
 **bukti acc invite**
