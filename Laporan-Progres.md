@@ -42,6 +42,8 @@ bukti clone repo di vscode
 Nama: Hanifa Eka Fauziah
 bukti ss: 
 ![alt text](image-2.png)
+
+
 =======
 # NOTULENSI DISKUSI PROYEK KELOMPOK 4 #
 Nama Kelompok	: Kelompok 4
