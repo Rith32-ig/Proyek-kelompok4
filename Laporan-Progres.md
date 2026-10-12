@@ -22,15 +22,20 @@
 
 ...
 
-<<<<<<< HEAD
-Tugas MEMBERNYA:
-clone repository -> tambahkan bukti di bagian tugas member (di Laporan-Progres.md)
-1. bukti acc invite:
-Nama: Dawwas Zakka Sutiono
+### Tugas MEMBER ###
+
+**bukti acc invite**
+1. Nama: Dawwas Zakka Sutiono
 bukti ss:
 ![alt text](image-4.png)
-bukti clone repo di vscode
-Nama: Dawwas Zakka Sutionno
+
+2. Nama : Muhammad Dhiyaul Haque
+bukti ss:
+![alt text](dhiyaul-acc.png)
+
+3. Nama : 
+**bukti clone repo di vscode **
+1. Nama: Dawwas Zakka Sutionno
 bukti ss: 
 ![alt text](image-5.png)
 
