@@ -1,4 +1,4 @@
-# Laporan Progress Kelompok 2 #
+# Laporan Progress Kelompok 4 #
 ## Anggota Kelompok ##
 1. Dawwas Zakka Sutiono (248801015)
 2. Muhammad Dhiyaul Haque (2488010041)
@@ -23,3 +23,21 @@ WAJIB BAGI PM/mirorring dari hp pun bolehhh: install bluestacks 5 -> buka lalu l
 <img src="Recording-2026-10-11-172946.gif" width="30%">
 
 ...
+
+### Bukti ACC Invite ###
+1. Nama : Muhammad Dhiyaul Haque 
+![alt text](<dhiyaul-acc.png>)
+
+2. Nama :
+
+3. Nama :
+
+
+### Bukti Clone Repository di VSCode ####
+1. Nama : Muhammad Dhiyaul Haque
+![alt text](dhiyaul-clone.png)
+
+2. Nama :
+
+
+3. Nama :
