@@ -17,7 +17,7 @@
 
 ### 1.2.1 Latar Belakang
 
-Usaha kos ini sudah berdiri sejak tahun 2002 dan jumlah kamarnya tidak berubah sejak awal. Kos dikelola langsung oleh pemilik tanpa penjaga. Sebelumnya pengelolaan sering berganti penjaga, namun saat ini dikelola sendiri. Berdasarkan wawancara, proses pengelolaan masih dilakukan secara manual dan memiliki beberapa kendala yang menjadi dasar perancangan aplikasi.
+Usaha kos ini sudah berdiri sejak tahun 2000 an dan jumlah kamarnya tidak berubah sejak awal. Kos dikelola langsung oleh pemilik tanpa penjaga. Sebelumnya pengelolaan sering berganti penjaga, namun saat ini dikelola sendiri. Berdasarkan wawancara, proses pengelolaan masih dilakukan secara manual dan memiliki beberapa kendala yang menjadi dasar perancangan aplikasi.
 
 ### 1.2.2 Temuan Wawancara dan Kebutuhan Pengguna
 
@@ -49,7 +49,7 @@ Kebutuhan pengguna: Aplikasi perlu menyediakan fitur pengajuan keluhan oleh peng
 
 5. Data penghuni perlu dikelola
 
-Data penghuni dibutuhkan untuk mendukung pengelolaan kos. (*lengkapi sesuai hasil wawancara*)
+Data penghuni dibutuhkan untuk mendukung pengelolaan kos.
 
 Kebutuhan pengguna: Aplikasi perlu menyediakan pengelolaan data penghuni dan kamar yang terpusat.
 
@@ -69,15 +69,67 @@ Berdasarkan temuan tersebut, kebutuhan utama yang menjadi dasar rancangan aplika
 4. Menyediakan pengelolaan data penghuni dan kamar.
 5. Menyediakan antarmuka yang sederhana dan mudah dipahami oleh pemilik maupun penghuni.
 
-**bukti wawancara:**
-
-- **Narasumber:** Pa Joko (selaku suami Bu Peni Azzam)
-- **Tanggal wawancara:** 17 Oktober 20226
-- **Media/tempat:** Ruang Tamu
-- **Bukti wawancara:**
-
 # 2. Pembagian Tugas
 ## Role dan Hak Akses
 
+| Role | Deskripsi | Akses Layar |
+|---|---|---|
+| **Pengelola/Pemilik** | Mengelola data penghuni, memantau dan mencatat pembayaran, serta menangani keluhan. | Login, Dashboard Pengelola, Data Penghuni, Pembayaran & Kuitansi, Keluhan (Kanban) |
+| **Penghuni** | Memantau status sewa dan tagihan, mengajukan keluhan, serta melihat pengumuman. | Login, Beranda Penghuni, Lapor Keluhan, Info/Pengumuman |
+| **Publik (belum login)** | Calon penghuni atau pengunjung yang melihat informasi kos. | Landing Page |
+
+## Pembagian Tugas Anggota
+
+| Anggota | Layar yang Dikerjakan | File |
+|---|---|---|
+| Moh. Farid Ilham Ghifari | Landing Page, Login | `LandingScreen.js`, `LoginScreen.js` |
+| Muhammad Dhiyaul Haque | Beranda Penghuni (+ tab Info/Pengumuman), Lapor Keluhan | `PenghuniHomeScreen.js`, `LaporKeluhanScreen.js` |
+| Dawwas Zakka Sutiono | Dashboard Pengelola, Data Penghuni | `AdminDashboardScreen.js`, `DataPenghuniScreen.js` |
+| Hanifa Eka Fauziah | Pembayaran & Kuitansi, Keluhan Admin (Kanban) | `PembayaranScreen.js`, `KeluhanAdminScreen.js` |
 
 # 3. Rancangan Layar
+
+## 3.1 Landing Page
+- **Fungsi utama:** Halaman awal yang menampilkan profil Kos Bima Putra (alamat, jam gerbang dikunci), fasilitas dan layanan, galeri foto, serta tombol masuk sesuai peran.
+- **Role terkait:** Publik (semua pengguna)
+- **Bukti Video/GIF Pengerjaan Layar:** 
+
+## 3.2 Login
+- **Fungsi utama:** Memvalidasi username dan kata sandi sesuai peran (Pengelola/Penghuni), dengan pesan error bila kosong atau salah, lalu mengarahkan ke area sesuai peran.
+- **Role terkait:** Pengelola, Penghuni
+- **Bukti Video/GIF Pengerjaan Layar:**
+
+## 3.3 Dashboard Pengelola
+- **Fungsi utama:** Menampilkan ringkasan kos: status kamar (terisi/kosong), pemasukan bulan ini, tagihan menunggak, keluhan aktif, dan daftar jatuh tempo terdekat beserta status pembayarannya.
+- **Role terkait:** Pengelola
+- **Bukti Video/GIF Pengerjaan Layar:**
+
+## 3.4 Data Penghuni
+- **Fungsi utama:** Menampilkan daftar penghuni dan kamar, pencarian berdasarkan nama/kamar, filter tipe sewa (bulanan/harian), serta menambah penghuni baru (nama, kamar, tipe sewa, no. HP, tanggal masuk) dengan opsi kirim info lewat WhatsApp.
+- **Role terkait:** Pengelola
+- **Bukti Video/GIF Pengerjaan Layar:**
+
+## 3.5 Pembayaran & Kuitansi
+- **Fungsi utama:** Mencatat pembayaran (penghuni, tipe sewa, metode tunai/transfer, periode, nominal), menampilkan kuitansi digital, riwayat pembayaran, dan daftar penghuni yang terlambat bayar.
+- **Role terkait:** Pengelola
+- **Bukti Video/GIF Pengerjaan Layar:** 
+
+## 3.6 Keluhan Admin (Kanban)
+- **Fungsi utama:** Papan keluhan berdasarkan status (Masuk, Ditangani Mandiri, Perlu Teknisi, Selesai) dengan tingkat prioritas, filter status, perpindahan status keluhan, dan catatan tindak lanjut (to-do) agar keluhan tidak terlewat.
+- **Role terkait:** Pengelola
+- **Bukti Video/GIF Pengerjaan Layar:** 
+
+## 3.7 Beranda Penghuni
+- **Fungsi utama:** Menampilkan status sewa, riwayat dan tagihan pembayaran, status keluhan milik sendiri, serta menu aksi cepat: unggah bukti bayar, izin pulang malam, info kos, dan aturan kos.
+- **Role terkait:** Penghuni
+- **Bukti Video/GIF Pengerjaan Layar:** 
+
+## 3.8 Lapor Keluhan
+- **Fungsi utama:** Form pengajuan keluhan (kategori, deskripsi, foto) yang terkirim ke pengelola dan langsung muncul di daftar keluhan penghuni dengan status "Masuk".
+- **Role terkait:** Penghuni
+- **Bukti Video/GIF Pengerjaan Layar:** *
+
+## 3.9 Info / Pengumuman
+- **Fungsi utama:** Menampilkan pengumuman dari pengelola kepada penghuni.
+- **Role terkait:** Penghuni
+- **Bukti Video/GIF Pengerjaan Layar:** 
