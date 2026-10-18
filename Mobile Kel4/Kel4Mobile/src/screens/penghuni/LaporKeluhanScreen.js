@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import { View, Pressable, ScrollView, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
+import {
+  View, Text, TextInput, Pressable, ScrollView, KeyboardAvoidingView, Platform, StatusBar, StyleSheet,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
-import Screen from '../components/Screen';
-import Txt from '../components/Txt';
-import CustomButton from '../components/CustomButton';
-import CustomInput from '../components/CustomInput';
-import { useAppData } from '../context/AppDataContext';
-import { useToast } from '../context/ToastContext';
-import { colors } from '../theme';
+/* ============ TEMA ============ */
+const C = {
+  navy: '#1E293B', acc: '#2563EB', bg: '#F8FAFC', surf: '#FFFFFF', txt: '#1E293B', mut: '#64748B',
+  bd: '#E2E8F0', ok: '#16A34A', er: '#DC2626', accb: '#DBEAFE',
+};
+const F = { regular: 'Inter_400Regular', medium: 'Inter_500Medium', semibold: 'Inter_600SemiBold', bold: 'Inter_700Bold' };
+const FAMILY = { normal: F.regular, 400: F.regular, 500: F.medium, 600: F.semibold, 700: F.bold, bold: F.bold, 800: F.bold };
+const GRAD_PRIMARY = ['#1E293B', '#2563EB'];
+const G_START = { x: 0, y: 0 };
+const G_END = { x: 1, y: 1 };
 
-// .cats pada form-keluhan.html (urutan sama dengan web)
+/* ============ DATA DUMMY ============ */
 const KATEGORI = [
   { key: 'Wi-Fi', icon: 'wifi' },
   { key: 'Fasilitas', icon: 'bed' },
@@ -18,58 +25,111 @@ const KATEGORI = [
   { key: 'Listrik', icon: 'bulb' },
 ];
 
+/* ============ KOMPONEN RE-USABLE ============ */
+function Txt({ style, ...props }) {
+  const { fontWeight, ...rest } = StyleSheet.flatten(style) || {};
+  return <Text {...props} style={[{ fontFamily: FAMILY[fontWeight || '400'], color: C.txt }, rest]} />;
+}
+
+function CustomButton({ title, icon, onPress, ghost = false, block = false, style }) {
+  const color = ghost ? C.acc : '#fff';
+  const inner = (
+    <View style={s.btnRow}>
+      {icon ? <Ionicons name={icon} size={18} color={color} style={{ marginRight: title ? 6 : 0 }} /> : null}
+      {title ? <Txt style={{ color, fontSize: 15, fontWeight: '600' }}>{title}</Txt> : null}
+    </View>
+  );
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      style={({ pressed }) => [{ alignSelf: block ? 'stretch' : 'flex-start', backgroundColor: ghost ? 'transparent' : C.acc, borderRadius: 14 }, pressed && { opacity: 0.85 }, style]}
+    >
+      {ghost ? (
+        <View style={{ borderWidth: 1, borderColor: C.acc, borderRadius: 14 }}>{inner}</View>
+      ) : (
+        <LinearGradient colors={GRAD_PRIMARY} start={G_START} end={G_END} style={{ borderRadius: 14 }}>
+          {inner}
+        </LinearGradient>
+      )}
+    </Pressable>
+  );
+}
+
+function CustomInput({ label, error, style, ...rest }) {
+  const [focused, setFocused] = useState(false);
+  const message = typeof error === 'string' ? error : null;
+  return (
+    <View style={style}>
+      {label ? <Txt style={s.label}>{label}</Txt> : null}
+      <View style={[s.field, focused && { borderColor: C.acc }, !!error && { borderColor: C.er }]}>
+        <TextInput
+          {...rest}
+          placeholderTextColor="#94A3B8"
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          autoCapitalize="sentences"
+          style={s.input}
+        />
+      </View>
+      {message ? <Txt style={s.errText}>{message}</Txt> : null}
+    </View>
+  );
+}
+
+/* ============ SCREEN 4: LAPOR KELUHAN ============ */
 export default function LaporKeluhanScreen({ navigation }) {
-  const toast = useToast();
-  const { addComplaint } = useAppData();
   const [kategori, setKategori] = useState('Wi-Fi');
   const [deskripsi, setDeskripsi] = useState('');
   const [foto, setFoto] = useState(null);
   const [err, setErr] = useState(null);
 
   const kirim = () => {
-    if (!deskripsi.trim()) {
+    const teks = deskripsi.trim();
+    if (!teks) {
       setErr('Deskripsi masalah wajib diisi');
       return;
     }
-    addComplaint({ kategori, deskripsi: deskripsi.trim() });
+    const ringkas = teks.length > 40 ? teks.slice(0, 40).trim() + '…' : teks;
+    const keluhanBaru = {
+      id: 'c' + Date.now(),
+      judul: `${kategori}: ${ringkas}`,
+      tanggal: 'Dilaporkan hari ini',
+      status: 'Masuk',
+      tone: 'ac',
+      step: 1,
+    };
     setDeskripsi('');
     setFoto(null);
     setErr(null);
-    toast('Keluhan terkirim ke pengelola ✓');
-    navigation.navigate('Beranda');
+    navigation.navigate('Beranda', { keluhanBaru });
   };
 
   return (
-    <Screen>
+    <SafeAreaView edges={['top']} style={{ flex: 1, backgroundColor: C.bg }}>
+      <StatusBar barStyle="dark-content" backgroundColor={C.bg} />
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView
-          contentContainerStyle={styles.body}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        >
-          {/* header: tombol kembali + judul */}
-          <View style={styles.head}>
-            <CustomButton title="" icon="arrow-back" type="ghost" size="sm" onPress={() => navigation.navigate('Beranda')} />
-            <Txt style={styles.h1}>Keluhan Baru</Txt>
+        <ScrollView contentContainerStyle={s.body} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+          <View style={s.head}>
+            <CustomButton icon="arrow-back" ghost onPress={() => navigation.navigate('Beranda')} style={{ borderRadius: 9 }} />
+            <Txt style={s.h1}>Keluhan Baru</Txt>
           </View>
 
-          {/* kategori */}
           <View>
-            <Txt style={styles.label}>Pilih kategori</Txt>
-            <View style={styles.cats}>
+            <Txt style={s.label}>Pilih kategori</Txt>
+            <View style={s.cats}>
               {KATEGORI.map((k) => {
                 const on = k.key === kategori;
                 return (
-                  <Pressable key={k.key} onPress={() => setKategori(k.key)} style={[styles.cat, on && styles.catOn]}>
-                    <Ionicons name={k.icon} size={30} color={on ? colors.acc : colors.mut} />
-                    <Txt style={{ fontWeight: '600', color: on ? colors.acc : colors.txt, marginTop: 4 }}>{k.key}</Txt>
+                  <Pressable key={k.key} onPress={() => setKategori(k.key)} style={[s.cat, on && s.catOn]}>
+                    <Ionicons name={k.icon} size={30} color={on ? C.acc : C.mut} />
+                    <Txt style={{ fontWeight: '600', color: on ? C.acc : C.txt, marginTop: 4 }}>{k.key}</Txt>
                   </Pressable>
                 );
               })}
             </View>
           </View>
 
-          {/* deskripsi */}
           <CustomInput
             label="Ceritakan masalahnya"
             placeholder="Contoh: Air di kamar mandi mati sejak pagi…"
@@ -78,71 +138,48 @@ export default function LaporKeluhanScreen({ navigation }) {
             error={err}
             multiline
             numberOfLines={4}
-            style={{ marginTop: 0 }}
           />
 
-          {/* foto bukti (placeholder upload) */}
           <View>
-            <Txt style={styles.label}>Foto bukti</Txt>
+            <Txt style={s.label}>Foto bukti</Txt>
             <Pressable
-              style={[styles.drop, foto && { borderColor: colors.acc, backgroundColor: colors.accb }]}
-              onPress={() => { setFoto('foto-bukti-keluhan.jpg'); toast('Foto dipilih (simulasi)'); }}
+              style={[s.drop, foto && { borderColor: C.acc, backgroundColor: C.accb }]}
+              onPress={() => setFoto('foto-bukti-keluhan.jpg')}
             >
-              <Ionicons name={foto ? 'checkmark-circle' : 'camera'} size={28} color={foto ? colors.ok : colors.mut} />
-              <Txt style={{ fontWeight: '700', color: colors.mut, marginTop: 4 }}>Ketuk untuk memilih foto</Txt>
-              <Txt style={{ fontSize: 12, color: colors.mut, marginTop: 4 }}>
-                {foto ? `✓ ${foto}` : 'JPG/PNG, maks 5 MB'}
-              </Txt>
+              <Ionicons name={foto ? 'checkmark-circle' : 'camera'} size={28} color={foto ? C.ok : C.mut} />
+              <Txt style={{ fontWeight: '700', color: C.mut, marginTop: 4 }}>Ketuk untuk memilih foto</Txt>
+              <Txt style={{ fontSize: 12, color: C.mut, marginTop: 4 }}>{foto ? `✓ ${foto}` : 'JPG/PNG, maks 5 MB'}</Txt>
             </Pressable>
           </View>
 
-          <CustomButton
-            title="Kirim Laporan"
-            icon="paper-plane"
-            size="lg"
-            block
-            style={{ borderRadius: 14, marginTop: 'auto' }}
-            onPress={kirim}
-          />
+          <CustomButton title="Kirim Laporan" icon="paper-plane" block style={{ marginTop: 'auto' }} onPress={kirim} />
         </ScrollView>
       </KeyboardAvoidingView>
-    </Screen>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
+/* ============ STYLE ============ */
+const s = StyleSheet.create({
+  btnRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 13, paddingHorizontal: 20 },
+  label: { fontSize: 12, fontWeight: '600', color: C.mut, marginBottom: 4 },
+  field: {
+    backgroundColor: C.surf, borderWidth: 1, borderColor: C.bd, borderRadius: 9, paddingHorizontal: 11, minHeight: 96,
+  },
+  input: { fontFamily: F.regular, fontSize: 14, color: C.txt, paddingVertical: 9, minHeight: 96, textAlignVertical: 'top' },
+  errText: { color: C.er, fontSize: 12, marginTop: 4 },
+
   body: { flexGrow: 1, padding: 18, gap: 14 },
   head: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   h1: { fontSize: 22, fontWeight: '700', letterSpacing: -0.4 },
-  label: { fontSize: 12, fontWeight: '600', color: colors.mut, marginBottom: 4 },
   cats: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 6 },
   cat: {
-    width: '47.5%',
-    flexGrow: 1,
-    alignItems: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 8,
-    backgroundColor: colors.surf,
-    borderWidth: 2,
-    borderColor: colors.bd,
-    borderRadius: 16,
+    width: '47.5%', flexGrow: 1, alignItems: 'center', paddingVertical: 16, paddingHorizontal: 8,
+    backgroundColor: C.surf, borderWidth: 2, borderColor: C.bd, borderRadius: 16,
   },
   catOn: {
-    borderColor: colors.acc,
-    backgroundColor: colors.accb,
-    shadowColor: '#2563EB',
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 4,
+    borderColor: C.acc, backgroundColor: C.accb,
+    shadowColor: '#2563EB', shadowOpacity: 0.25, shadowRadius: 8, shadowOffset: { width: 0, height: 6 }, elevation: 4,
   },
-  drop: {
-    borderWidth: 2,
-    borderStyle: 'dashed',
-    borderColor: colors.bd,
-    borderRadius: 16,
-    padding: 22,
-    alignItems: 'center',
-    marginTop: 6,
-  },
+  drop: { borderWidth: 2, borderStyle: 'dashed', borderColor: C.bd, borderRadius: 16, padding: 22, alignItems: 'center', marginTop: 6 },
 });
