@@ -40,7 +40,6 @@ const tabScreenOptions = ({ route }) => ({
 
 const Kosong = () => null;
 
-/* Area Penghuni: Beranda · Lapor · Info · Keluar */
 function PenghuniTabs() {
   return (
     <Tab.Navigator screenOptions={tabScreenOptions}>

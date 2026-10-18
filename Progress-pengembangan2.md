@@ -6,7 +6,7 @@
 - **Mata kuliah:** Pemrograman Mobile (PEMMOB)
 - **Nama aplikasi:** BKP(Bima Kos Putra)
 - **Tema proyek:** Sistem Informasi Pengelolaan Kos
-- **Platform/teknologi:** Js dan Expo
+- **Platform/teknologi:** React Native, Js dan Expo
 - **Anggota kelompok:**
   1. Moh. Farid Ilham Ghifari (2488010066)
   2. Dawwas Zakka Sutiono (248801015)
@@ -68,6 +68,15 @@ Berdasarkan temuan tersebut, kebutuhan utama yang menjadi dasar rancangan aplika
 3. Menyediakan fitur pengajuan dan pencatatan keluhan beserta statusnya.
 4. Menyediakan pengelolaan data penghuni dan kamar.
 5. Menyediakan antarmuka yang sederhana dan mudah dipahami oleh pemilik maupun penghuni.
+
+### Bukti Wawancara ###
+...
+Narasumber: Pemilik Kos Bima Putra
+Tanggal wawancara: 17 Oktober 2026
+Media/tempat: Ruang Tamu
+Bukti wawancara:
+[![Watch Demo](https://img.youtube.com/vi/WQ2p3_J0J9w/maxresdefault.jpg)](https://youtu.be/WQ2p3_J0J9w)
+...
 
 # 2. Pembagian Tugas
 ## Role dan Hak Akses
