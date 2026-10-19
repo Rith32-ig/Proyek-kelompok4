@@ -75,6 +75,8 @@ Narasumber: Pemilik Kos Bima Putra
 Tanggal wawancara: 17 Oktober 2026
 Media/tempat: Ruang Tamu
 Bukti wawancara:
+<img src="image-6.png" width="50%">
+<img src="image-7.png" width="50%">
 [![Watch Demo](https://img.youtube.com/vi/WQ2p3_J0J9w/maxresdefault.jpg)](https://youtu.be/WQ2p3_J0J9w)
 ...
 
@@ -132,13 +134,16 @@ Bukti wawancara:
 - **Fungsi utama:** Menampilkan status sewa, riwayat dan tagihan pembayaran, status keluhan milik sendiri, serta menu aksi cepat: unggah bukti bayar, izin pulang malam, info kos, dan aturan kos.
 - **Role terkait:** Penghuni
 - **Bukti Video/GIF Pengerjaan Layar:** 
+<img src="dashboard-penghuni.gif" width="30%">
 
 ## 3.8 Lapor Keluhan
 - **Fungsi utama:** Form pengajuan keluhan (kategori, deskripsi, foto) yang terkirim ke pengelola dan langsung muncul di daftar keluhan penghuni dengan status "Masuk".
 - **Role terkait:** Penghuni
 - **Bukti Video/GIF Pengerjaan Layar:** *
+<img src="laporan.gif" width="30%">
 
 ## 3.9 Info / Pengumuman
 - **Fungsi utama:** Menampilkan pengumuman dari pengelola kepada penghuni.
 - **Role terkait:** Penghuni
 - **Bukti Video/GIF Pengerjaan Layar:** 
+<img src="info.gif" width="30%">
