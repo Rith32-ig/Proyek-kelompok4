@@ -112,12 +112,13 @@ Bukti wawancara:
 - **Fungsi utama:** Menampilkan ringkasan kos: status kamar (terisi/kosong), pemasukan bulan ini, tagihan menunggak, keluhan aktif, dan daftar jatuh tempo terdekat beserta status pembayarannya.
 - **Role terkait:** Pengelola
 - **Bukti Video/GIF Pengerjaan Layar:**
+![alt text](Hal-AdminDashboard.gif)
 
 ## 3.4 Data Penghuni
 - **Fungsi utama:** Menampilkan daftar penghuni dan kamar, pencarian berdasarkan nama/kamar, filter tipe sewa (bulanan/harian), serta menambah penghuni baru (nama, kamar, tipe sewa, no. HP, tanggal masuk) dengan opsi kirim info lewat WhatsApp.
 - **Role terkait:** Pengelola
 - **Bukti Video/GIF Pengerjaan Layar:**
-
+![alt text](Hal-AdminDashboard-1.gif)
 ## 3.5 Pembayaran & Kuitansi
 - **Fungsi utama:** Mencatat pembayaran (penghuni, tipe sewa, metode tunai/transfer, periode, nominal), menampilkan kuitansi digital, riwayat pembayaran, dan daftar penghuni yang terlambat bayar.
 - **Role terkait:** Pengelola
