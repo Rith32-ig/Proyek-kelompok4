@@ -75,6 +75,8 @@ Narasumber: Pemilik Kos Bima Putra
 Tanggal wawancara: 17 Oktober 2026
 Media/tempat: Ruang Tamu
 Bukti wawancara:
+<img src="image-6.png" width="50%">
+<img src="image-7.png" width="50%">
 [![Watch Demo](https://img.youtube.com/vi/WQ2p3_J0J9w/maxresdefault.jpg)](https://youtu.be/WQ2p3_J0J9w)
 ...
 
@@ -112,13 +114,12 @@ Bukti wawancara:
 - **Fungsi utama:** Menampilkan ringkasan kos: status kamar (terisi/kosong), pemasukan bulan ini, tagihan menunggak, keluhan aktif, dan daftar jatuh tempo terdekat beserta status pembayarannya.
 - **Role terkait:** Pengelola
 - **Bukti Video/GIF Pengerjaan Layar:**
-![alt text](Hal-AdminDashboard.gif)
 
 ## 3.4 Data Penghuni
 - **Fungsi utama:** Menampilkan daftar penghuni dan kamar, pencarian berdasarkan nama/kamar, filter tipe sewa (bulanan/harian), serta menambah penghuni baru (nama, kamar, tipe sewa, no. HP, tanggal masuk) dengan opsi kirim info lewat WhatsApp.
 - **Role terkait:** Pengelola
 - **Bukti Video/GIF Pengerjaan Layar:**
-![alt text](Hal-AdminDashboard-1.gif)
+
 ## 3.5 Pembayaran & Kuitansi
 - **Fungsi utama:** Mencatat pembayaran (penghuni, tipe sewa, metode tunai/transfer, periode, nominal), menampilkan kuitansi digital, riwayat pembayaran, dan daftar penghuni yang terlambat bayar.
 - **Role terkait:** Pengelola
@@ -133,13 +134,16 @@ Bukti wawancara:
 - **Fungsi utama:** Menampilkan status sewa, riwayat dan tagihan pembayaran, status keluhan milik sendiri, serta menu aksi cepat: unggah bukti bayar, izin pulang malam, info kos, dan aturan kos.
 - **Role terkait:** Penghuni
 - **Bukti Video/GIF Pengerjaan Layar:** 
+<img src="dashboard-penghuni.gif" width="30%">
 
 ## 3.8 Lapor Keluhan
 - **Fungsi utama:** Form pengajuan keluhan (kategori, deskripsi, foto) yang terkirim ke pengelola dan langsung muncul di daftar keluhan penghuni dengan status "Masuk".
 - **Role terkait:** Penghuni
 - **Bukti Video/GIF Pengerjaan Layar:** *
+<img src="laporan.gif" width="30%">
 
 ## 3.9 Info / Pengumuman
 - **Fungsi utama:** Menampilkan pengumuman dari pengelola kepada penghuni.
 - **Role terkait:** Penghuni
 - **Bukti Video/GIF Pengerjaan Layar:** 
+<img src="info.gif" width="30%">
