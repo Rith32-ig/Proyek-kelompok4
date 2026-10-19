@@ -5,8 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import LandingScreen from '../screens/LandingScreen';
 import LoginScreen from '../screens/LoginScreen';
-import PenghuniHomeScreen, { PengumumanScreen } from '../screens/penghuni/PenghuniHomeScreen';
-import LaporKeluhanScreen from '../screens/penghuni/LaporKeluhanScreen';
+import PenghuniHomeScreen, { PengumumanScreen } from '../screens/Penghuni/PenghuniHomeScreen';
+import LaporKeluhanScreen from '../screens/Penghuni/LaporKeluhanScreen';
 import AdminDashboardScreen from '../screens/pengelola/AdminDashboardScreen';
 import DataPenghuniScreen from '../screens/pengelola/DataPenghuniScreen';
 import PembayaranScreen from '../screens/pengelola/PembayaranScreen';
